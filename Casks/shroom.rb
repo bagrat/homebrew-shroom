@@ -12,8 +12,8 @@
 # notarized, so macOS would refuse to open a copy marked as downloaded — the install line's
 # curl never marks it, and this removes the mark Homebrew adds, after the signature checks.
 cask "shroom" do
-  version "0.1.17"
-  sha256 "4830914657e007a5b81deab2f9be3032497900954088c537f55cf8deaeca034e"
+  version "0.1.18"
+  sha256 "8ccdfa6a89f2de0a55bc854b50329251cc725835edbb055e99d66bce85eebb6e"
 
   url "https://github.com/bagrat/shroom/releases/download/v#{version}/shroom-#{version}-arm64.zip"
   name "shroom"
