@@ -12,8 +12,8 @@
 # notarized, so macOS would refuse to open a copy marked as downloaded — the install line's
 # curl never marks it, and this removes the mark Homebrew adds, after the signature checks.
 cask "shroom" do
-  version "0.1.24"
-  sha256 "317cab6906b18d3be6b02a9998f493740e3f561862a4e6825c34e5de5cf217cf"
+  version "0.1.25"
+  sha256 "8236effda37b6d4309d301c22c4943f4d3a4f9905ee75d2a7cbcdd92afbfba6e"
 
   url "https://github.com/bagrat/shroom/releases/download/v#{version}/shroom-#{version}-arm64.zip"
   name "shroom"
@@ -32,6 +32,10 @@ cask "shroom" do
   depends_on macos: :sonoma
 
   app "shroom.app", target: "~/Applications/shroom.app"
+  # The `shroom` command the app carries, linked into Homebrew's bin (Bagrat, 2026-10-18:
+  # always installed; DECISIONS B217). render-cask.sh keeps the line below for a release
+  # whose manifest says it carries the command (cli=shroom-cli), and drops it for one before.
+  binary "#{Dir.home}/Applications/shroom.app/Contents/MacOS/shroom-cli", target: "shroom"
 
   # Before anything is placed, the staged copy is held to the release's signer, and only
   # then is Homebrew's quarantine mark lifted from it. The pin is the release certificate's
